@@ -8,7 +8,6 @@ RUN apk add --no-cache \
     openssl-dev \
     libxslt-dev \
     gd-dev \
-    geoip-dev \
     wget \
     git \
     gettext
@@ -50,13 +49,11 @@ RUN ./configure \
     --with-http_auth_request_module \
     --with-http_xslt_module=dynamic \
     --with-http_image_filter_module=dynamic \
-    --with-http_geoip_module=dynamic \
     --with-threads \
     --with-stream \
     --with-stream_ssl_module \
     --with-stream_ssl_preread_module \
     --with-stream_realip_module \
-    --with-stream_geoip_module=dynamic \
     --with-http_slice_module \
     --with-http_v2_module \
     --add-module=../nginx-rtmp-module && \
@@ -76,7 +73,7 @@ RUN mkdir -p /var/cache/nginx/client_temp \
 RUN chown -R nginx:nginx /var/www/html/hls /var/www/html/dash
 
 # Copy nginx config template
-COPY nginx.conf.template /etc/nginx/nginx.conf.template
+COPY docker/nginx-rtmp/nginx.conf.template /etc/nginx/nginx.conf.template
 
 # Create entrypoint script
 RUN echo '#!/bin/sh' > /docker-entrypoint.sh && \

@@ -4,8 +4,8 @@ services:
   # Nginx with RTMP module for live streaming
   nginx-rtmp:
     build:
-      context: ./docker/nginx-rtmp
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: docker/nginx-rtmp/Dockerfile
     ports:
       - "80:80"        # メインWebアクセス
       - "1935:1935"    # RTMP配信

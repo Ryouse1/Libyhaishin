@@ -76,7 +76,7 @@ RUN mkdir -p /var/cache/nginx/client_temp \
 RUN chown -R nginx:nginx /var/www/html/hls /var/www/html/dash
 
 # Copy nginx config template
-COPY nginx.conf.template /etc/nginx/nginx.conf.template
+COPY docker/nginx-rtmp/nginx.conf.template /etc/nginx/nginx.conf.template
 
 # Create entrypoint script
 RUN echo '#!/bin/sh' > /docker-entrypoint.sh && \

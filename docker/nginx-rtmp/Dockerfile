@@ -1,7 +1,9 @@
 FROM nginx:alpine
 
-# Install build dependencies
+# Install runtime dependencies and RTMP module
 RUN apk add --no-cache \
+    gettext \
+    nginx-mod-rtmp
     build-base \
     pcre-dev \
     zlib-dev \
@@ -80,9 +82,6 @@ RUN echo '#!/bin/sh' > /docker-entrypoint.sh && \
     echo 'envsubst "\$DOMAIN" < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf' >> /docker-entrypoint.sh && \
     echo 'exec nginx -g "daemon off;"' >> /docker-entrypoint.sh && \
     chmod +x /docker-entrypoint.sh
-
-# Clean up
-RUN rm -rf /tmp/*
 
 EXPOSE 80 1935 8080
 

@@ -75,6 +75,13 @@ function TopLive(props: LiveProps) {
           style={{ "--optionBackground": `url(${process.env.NEXT_PUBLIC_THUMBNAIL_URL}?id=${option.stream_key})` }}
         />
       ))}
+      {lives.length === 0 && (
+        <div className="shrink-0 text-center">
+          <p className="text-sm font-semibold text-slate-700">次の配信を待っています</p>
+          <p className="text-xs text-slate-500">配信を開始してトップに表示しよう！</p>
+          <ArrowRightCircle size={32} className="mx-auto mt-2 text-slate-400" />
+        </div>
+      )}
       <div className="shrink-0 text-center">
         <p className="text-sm font-semibold text-slate-700">次の配信を待っています</p>
         <p className="text-xs text-slate-500">配信を開始してトップに表示しよう！</p>

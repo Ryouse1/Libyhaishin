@@ -1,6 +1,7 @@
 FROM nginx:alpine
 
 # Install runtime dependencies and RTMP module
+RUN apk add --no-cache gettext nginx-mod-rtmp
 RUN apk add --no-cache \
     gettext \
     nginx-mod-rtmp
